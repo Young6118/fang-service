@@ -3,6 +3,16 @@
 const Controller = require('egg').Controller;
 
 class DepartmentController extends Controller {
+    async list() {
+        const query = this.ctx.request.query;
+        if (query.page && query.page_size) {
+            const response = await this.ctx.service.department.list(query)
+            this.ctx.succeed(response);
+        } else {
+            this.ctx.failure('-2');
+        }
+    }
+
     async createOrUpdate() {
         const { ctx } = this;
         try {
