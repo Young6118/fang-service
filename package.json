@@ -18,8 +18,13 @@
     "egg-bin": "^4.11.0",
     "egg-ci": "^1.11.0",
     "egg-mock": "^3.21.0",
-    "eslint": "^5.13.0",
-    "eslint-config-egg": "^7.1.0"
+    "eslint": "^5.16.0",
+    "eslint-config-egg": "^7.1.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-friendly-formatter": "^4.0.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier-eslint-cli": "^5.0.0"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -44,5 +49,18 @@
     "url": ""
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "lint-staged": {
+    "src/**/*.js": [
+      "prettier-eslint --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-commit": "git subtree push --prefix docs origin gh-pages"
+    }
+  }
 }

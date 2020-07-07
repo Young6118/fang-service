@@ -1,7 +1,7 @@
 module.exports = app => {
     const mongoose = app.mongoose;
     const Schema = mongoose.Schema;
-    const user = new Schema({
+    const Loupan = new Schema({
         city: { 
             type: String
         },
@@ -17,12 +17,6 @@ module.exports = app => {
         sale: { 
             type: String,
         }
-    }, {
-        versionKey: false,
-        timestamps: {
-            createdAt: "createdAt",
-            updatedAt: "updatedAt",
-        }
     });
-    return mongoose.model('Loupan', user);
+    return mongoose.model('Loupan', Loupan);
 }
